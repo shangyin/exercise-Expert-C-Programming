@@ -1,13 +1,12 @@
 package com.baidu.hi;
 
-import sun.java2d.opengl.WGLSurfaceData;
-
 import java.util.*;
 
 /**
  * Created by 41237 n 2016/3/22.
  */
 public class Calculator {
+	
     private static void doMath(Stack<Integer> number, Stack<Character> operator)
     {
         int a = number.pop();
@@ -34,6 +33,10 @@ public class Calculator {
         number.push(res);
     }
 
+	/**
+	后缀表达式
+	当第一个符号是空格时出错
+	*/
     public static int subfixMath(String s)
     {
         Stack<Integer> myStack = new Stack<>();
@@ -51,22 +54,27 @@ public class Calculator {
                 switch (e)
                 {
                     case "add":
-                        myStack.push(new Integer(arg1+arg2));
+                        myStack.push(new Integer(arg2+arg1));
                         break;
                     case "sub":
-                        myStack.push(new Integer(arg1-arg2));
+                        myStack.push(new Integer(arg2-arg1));
                         break;
                     case "mul":
                         myStack.push(new Integer(arg1*arg2));
                         break;
                     case "div":
-                        myStack.push(new Integer(arg1/arg2));
+                        myStack.push(new Integer(arg2/arg1));
                 }
             }
         }
         return myStack.pop();
     }
 
+	/**
+	中序表达式，也就是平时用的表达式
+	1. 不支持负号。
+	2. 除法运算不正确（同等优先级下从右至左）
+	*/
     public static int midFix(String s)
     {
 
@@ -98,7 +106,7 @@ public class Calculator {
                 operatorStack.push(c);
             }
             else
-                if (c != ' ')
+                if (c != ' ')			//allow space in expression
                     operatorStack.push(c);
         }
         while (!operatorStack.empty())
@@ -118,7 +126,6 @@ public class Calculator {
 
     public  static void main(String[] argv)
     {
-
         System.out.println(midFix(new Scanner(System.in).nextLine()));
     }
 }

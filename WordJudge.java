@@ -14,24 +14,9 @@ public class WordJudge {
         return s.matches("[\\+\\-\\*/%]");
     }
 
-    public static boolean isBracket(String s)
-    {
-        return s.matches("[()]");
-    }
-
     public static boolean isNumber(char c)
     {
         return c>=48 && c<=57;
-    }
-
-    public static boolean isLeftBracket(char c)
-    {
-        return c == '(';
-    }
-
-    public static boolean isRightBracket(char c)
-    {
-        return c == ')';
     }
 
    /* public static void main(String[] argv)

@@ -14,6 +14,9 @@ public class WordScanner {
         return input.split("\\s+");
     }
 
+	/**
+	将字符串中index开始的一个数字化为int
+	*/
     public static int readNumber(String s, int index)
     {
         int last = index;
