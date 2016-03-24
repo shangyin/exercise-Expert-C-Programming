@@ -120,7 +120,7 @@ void deal_with_declarator(void) {
     deal_with_pointers();
 
     while (top >= 0) {
-        if (stack[top].type = '(') {
+        if (stack[top].type == '(') {
             pop;
             gettoken();
             deal_with_declarator();
